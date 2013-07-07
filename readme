@@ -2,6 +2,13 @@ This is like http://checkvist.com/checklists/202632-mail2cv but in
 python and possibly easier to run privately.
 
 ----------
+Installation:
+
+virtualenv .
+bin/pip install -r pydeps
+bin/checkvistpost.py
+
+----------
 
 To route mail, assuming you use postfix, add this line to /etc/aliases:
 
