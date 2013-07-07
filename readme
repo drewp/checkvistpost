@@ -1,0 +1,19 @@
+This is like http://checkvist.com/checklists/202632-mail2cv but in
+python and possibly easier to run privately.
+
+----------
+
+To route mail, assuming you use postfix, add this line to /etc/aliases:
+
+checkvist: "| /usr/bin/curl http://localhost:9108/newmail -H Content-type:\ message/rfc822 --data-binary @-"
+
+Then run 'newaliases'. Keep the server running, and mail to
+checkvist@yourdomain will be posted to the local service which will
+prepend to your checkvist.
+
+The config.json file is like this:
+    {
+      "username": "<email address you use to log in to checkvist>",
+      "remote_key": "<long opaque string from http://checkvist.com/auth/profile under 'your remote OpenAPI key'>",
+      "checklist_id": "<number from the url of the checklist you want to edit>"
+    }
